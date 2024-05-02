@@ -30,6 +30,14 @@ graph = {
     }
 }
 
+coordinates = {
+    "New York City" : (40.7128, -74.0060),
+    "Houston" : (29.7604, -95.3698),
+    "Phoenix" : (33.4484, -112.0740),
+    "Los Angeles" : (34.0522, -118.2437),
+    "Chicago": (41.8781, -87.6298)
+}
+
 def haversine(lat1, lon1, lat2, lon2):
     # convert decimal degrees to radians
     lat1, lon1, lat2, lon2 = map(math.radians, [lat1, lon1, lat2, lon2])
