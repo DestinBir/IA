@@ -75,7 +75,7 @@ def greedyBestFirstSearch(graph, start, end) :
             dist_heuristic = heuristic(neighbor, end)
             if neighbor not in cities and dist_heuristic < min_heuristic :
                 min_cost = dist
-                in_heuristic = dist_heuristic
+                min_heuristic = dist_heuristic
                 next_node = neighbor
         
         # Update path and return final result 
