@@ -1,6 +1,5 @@
 import math
 
-
 graph = {
     "New York City" : {
         "Chicago" : 1146,
