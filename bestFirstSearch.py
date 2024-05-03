@@ -52,8 +52,8 @@ def bestFirstSearch(graph, start, end) :
         current_node = next_node
     return path, cost, cities
 
-start = 'New York City'
-end = 'Los Angeles'
+start = 'Los Angeles'
+end = 'New York City'
 
 result = bestFirstSearch(graph, start, end)
 
