@@ -41,3 +41,20 @@ coordinates = {
 }
 
 
+start = 'Phoenix'
+end = 'Los Angeles'
+
+results = [bestFirstSearch(graph, start, end), greedyBestFirstSearch(graph, start, end, coordinates), astar(graph, start, end, coordinates)]
+
+for result in results:
+    if result[0]:
+        print("Path from ", start, " to ", end, ": ")
+        for i in result[0]:
+            print("- ", i)
+
+        print("Total cost: ", result[1])
+    else:
+        print("No path found from ", start, " to ", end)
+     
+    print("\n -------------------------------------------------- \n")
+
