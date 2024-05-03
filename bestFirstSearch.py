@@ -1,32 +1,3 @@
-graph = {
-    "New York City" : {
-        "Chicago" : 1146,
-        "Houston" : 2547
-    },
-    "Los Angeles": {
-        "Chicago" : 2786,
-        "Houston" : 2249,
-        "Phoenix" : 373
-    },
-    "Chicago": {
-        "New York City" : 1146,
-        "Houston" : 1483,
-        "Phoenix" : 2835,
-        "Los Angeles" : 2786
-    },
-    "Phoenix" : {
-        "Los Angeles" : 373,
-        "Chicago" : 2835,
-        "Houston" : 1804
-    },
-    "Houston" : {
-        "New York City" : 2547,
-        "Chicago" : 1483,
-        "Los Angeles" : 2249,
-        "Phoenix" : 1804
-    }
-}
-
 def bestFirstSearch(graph, start, end) : 
     cities = [] # Cities that are visited
     current_node = start
@@ -51,18 +22,3 @@ def bestFirstSearch(graph, start, end) :
         path.append(next_node)
         current_node = next_node
     return path, cost, cities
-
-start = 'Los Angeles'
-end = 'New York City'
-
-result = bestFirstSearch(graph, start, end)
-
-if result[0]:
-    print("Path from ", start, " to ", end, ": ")
-    for i in result[0]:
-        print("- ", i)
-    
-    print("Total cost: ", result[1])
-else:
-    print("No path found from ", start, " to ", end)
-    
