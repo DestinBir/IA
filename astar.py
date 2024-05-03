@@ -1,7 +1,5 @@
 import math
 
-
-
 def haversine(lat1, lon1, lat2, lon2):
     # convert decimal degrees to radians
     lat1, lon1, lat2, lon2 = map(math.radians, [lat1, lon1, lat2, lon2])
@@ -14,14 +12,14 @@ def haversine(lat1, lon1, lat2, lon2):
     distance = 2*R*math.asin(math.sqrt(a))
     return distance
 
-def heuristic(A,B):
+def heuristic(A,B, coordinates):
     lat1, lon1 = coordinates[A]
     lat2, lon2 = coordinates[B]
     
     return haversine(lat1, lon1, lat2, lon2)
 
 
-def astar(graph, start, end) : 
+def astar(graph, start, end, coordinates) : 
     cities = [] # Cities that are visited
     current_node = start
     path = [start] # final path --> solution
@@ -35,7 +33,7 @@ def astar(graph, start, end) :
         min_heuristic = float('inf')
         next_node = None # empty, nothing, no solution
         for neighbor, dist in neighbors.items() :
-            dist_heuristic = heuristic(neighbor, end) + dist
+            dist_heuristic = heuristic(neighbor, end, coordinates) + dist
             if neighbor not in cities and dist_heuristic < min_heuristic :
                 min_cost = dist
                 min_heuristic = dist_heuristic
@@ -48,18 +46,3 @@ def astar(graph, start, end) :
         path.append(next_node)
         current_node = next_node
     return path, cost, cities
-
-start = 'Los Angeles'
-end = 'New York City'
-
-result = astar(graph, start, end)
-
-if result[0]:
-    print("Path from ", start, " to ", end, ": ")
-    for i in result[0]:
-        print("- ", i)
-    
-    print("Total cost: ", result[1])
-else:
-    print("No path found from ", start, " to ", end)
-    
