@@ -1,13 +1,5 @@
 import math
 
-coordinates = {
-    "New York City" : (40.7128, -74.0060),
-    "Houston" : (29.7604, -95.3698),
-    "Phoenix" : (33.4484, -112.0740),
-    "Los Angeles" : (34.0522, -118.2437),
-    "Chicago": (41.8781, -87.6298)
-}
-
 def haversine(lat1, lon1, lat2, lon2):
     # convert decimal degrees to radians
     lat1, lon1, lat2, lon2 = map(math.radians, [lat1, lon1, lat2, lon2])
@@ -21,14 +13,14 @@ def haversine(lat1, lon1, lat2, lon2):
     
     return distance
 
-def heuristic(A,B):
+def heuristic(A,B, coordinates):
     lat1, lon1 = coordinates[A]
     lat2, lon2 = coordinates[B]
     
     return haversine(lat1, lon1, lat2, lon2)
 
 
-def greedyBestFirstSearch(graph, start, end) : 
+def greedyBestFirstSearch(graph, start, end, coordinates) : 
     cities = [] # Cities that are visited
     current_node = start
     path = [start] # final path --> solution
@@ -42,7 +34,7 @@ def greedyBestFirstSearch(graph, start, end) :
         min_heuristic = float('inf')
         next_node = None # empty, nothing, no solution
         for neighbor, dist in neighbors.items() :
-            dist_heuristic = heuristic(neighbor, end)
+            dist_heuristic = heuristic(neighbor, end, coordinates)
             if neighbor not in cities and dist_heuristic < min_heuristic :
                 min_cost = dist
                 min_heuristic = dist_heuristic
