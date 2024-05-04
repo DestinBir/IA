@@ -40,7 +40,7 @@ coordinates = {
     "Chicago": (41.8781, -87.6298)
 }
 
-
+# """
 start = 'Phoenix'
 end = 'Los Angeles'
 
@@ -58,3 +58,34 @@ for result in results:
      
     print("\n -------------------------------------------------- \n")
 
+"""
+
+open = True
+
+while open:
+    print("--------------------------------------------------------------------------------")
+    print("| ---------- TROUVER LE CHEMIN LE MOINS COUTEUX GRACE A CE LOGICIEL ---------- |")
+    print("--------------------------------------------------------------------------------")
+    start = input("1. Entres ta ville de départ: ")
+    end = input("2. Entres ta ville de destination: ")
+    print("--------------------------------------------------------------------------------")
+    if start in graph and end in graph:
+        message = f"Pour sortir de {start} vers {end}"
+        print(message)
+        results = [bestFirstSearch(graph, start, end), greedyBestFirstSearch(graph, start, end, coordinates), astar(graph, start, end, coordinates)]
+
+        for result in results:
+            print(result)
+
+            print("--------------------------------------------------------------------------------")
+        print("Voilà nos suggestions en matière d'itineraire. ")
+        open=False
+
+        
+    else: 
+        message = "Entrer des villes existantes dans notre graph"
+        print(message)
+        open = False
+    
+print("--------------------------------------------------------------------------------")
+"""
